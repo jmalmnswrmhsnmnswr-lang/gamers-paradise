@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamers Paradise | تواصل معنا</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <h1>🎮 Gamers Paradise - جنة اللاعبين</h1>
+        <ul class="nav-list">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="consoles.html">أجهزة الألعاب (5)</a></li>
+            <li><a href="games.html">الألعاب والنسخ (20)</a></li>
+            <li><a href="product-details.html">تفاصيل المنتج</a></li>
+            <li><a href="cart.html">🛒 السلة والتوصيل (<span id="cart-count">0</span>)</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="form-box">
+            <h2>📞 أرسل استفسارك أو اقتراحك</h2>
+            <p id="reply-box" style="color: #38bdf8; font-weight: bold;"></p>
+            <form>
+                <label for="sender">الاسم:</label><br>
+                <input type="text" id="sender" name="sender"><br>
+
+                <label for="msg_email">البريد الإلكتروني:</label><br>
+                <input type="email" id="msg_email" name="msg_email"><br>
+
+                <label for="message">نص الرسالة:</label><br>
+                <textarea id="message" name="message" rows="4"></textarea><br>
+
+                <button type="button" class="btn" onclick='document.getElementById("reply-box").innerHTML = "✅ شكراً لتواصلك مع Gamers Paradise! سنرد عليك قريباً."'>إرسال الرسالة</button>
+                <input type="reset" value="إلغاء" style="padding: 9px;">
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <p style="color: #94a3b8;">جميع الحقوق محفوظة &copy; 2026 - مشروع جامعي: <strong>Gamers Paradise</strong></p>
+        <p><a href="https://www.w3schools.com/" target="_blank" style="color: #38bdf8;">مرجع تعلم تطوير الويب W3Schools</a></p>
+    </div>
+    <script src="store.js"></script>
+</body>
+</html>

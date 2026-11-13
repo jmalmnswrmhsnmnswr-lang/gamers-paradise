@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamers Paradise | مكتبة الألعاب (20 لعبة)</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <h1>🎮 Gamers Paradise - جنة اللاعبين</h1>
+        <ul class="nav-list">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="consoles.html">أجهزة الألعاب (5)</a></li>
+            <li><a href="games.html">الألعاب والنسخ (20)</a></li>
+            <li><a href="product-details.html">تفاصيل المنتج</a></li>
+            <li><a href="cart.html">🛒 السلة والتوصيل (<span id="cart-count">0</span>)</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h2>مكتبة الألعاب الشاملة (20 لعبة لجميع المنصات)</h2>
+        
+        <div class="filter-bar">
+            <b>تصفية الألعاب حسب المنصة: </b>
+            <button type="button" class="filter-btn active" onclick="filterGames('ALL', this)">الكل (20)</button>
+            <button type="button" class="filter-btn" onclick="filterGames('PS5', this)">🔵 ألعاب PlayStation 5</button>
+            <button type="button" class="filter-btn" onclick="filterGames('Xbox', this)">🟢 ألعاب Xbox</button>
+            <button type="button" class="filter-btn" onclick="filterGames('PC', this)">🟠 ألعاب PC الكمبيوتر</button>
+            <button type="button" class="filter-btn" onclick="filterGames('Nintendo', this)">🔴 ألعاب Nintendo Switch</button>
+        </div>
+
+        <div id="games-grid" style="text-align: center;"></div>
+
+        <h3>📋 جدول الفهرس الكامل للألعاب الـ 20 ومواصفاتها</h3>
+        <table id="games-table">
+            <tr>
+                <th>#</th>
+                <th>اسم اللعبة</th>
+                <th>المنصة</th>
+                <th>الشركة المصنعة</th>
+                <th>نوع النسخة</th>
+                <th>السعر</th>
+                <th>التفاصيل / الشراء</th>
+            </tr>
+        </table>
+    </div>
+    <div id="footer">
+        <p style="color: #94a3b8;">جميع الحقوق محفوظة &copy; 2026 - مشروع جامعي: <strong>Gamers Paradise</strong></p>
+        <p><a href="https://www.w3schools.com/" target="_blank" style="color: #38bdf8;">مرجع تعلم تطوير الويب W3Schools</a></p>
+    </div>
+    <script src="store.js"></script>
+    <script>
+        function renderGames(platFilter) {
+            var gridHtml = "";
+            var games = PRODUCTS.filter(function(p) {
+                return p.category === "game" && (platFilter === "ALL" || p.platform === platFilter);
+            });
+            games.forEach(function(g) {
+                gridHtml += createCardHTML(g);
+            });
+            document.getElementById("games-grid").innerHTML = gridHtml;
+        }
+
+        function filterGames(platform, btn) {
+            var btns = document.querySelectorAll(".filter-btn");
+            btns.forEach(function(b) { b.classList.remove("active"); });
+            btn.classList.add("active");
+            renderGames(platform);
+        }
+
+        function pageInit() {
+            renderGames("ALL");
+            var table = document.getElementById("games-table");
+            var games = PRODUCTS.filter(function(p) { return p.category === "game"; });
+            games.forEach(function(g, idx) {
+                var row = table.insertRow(-1);
+                row.innerHTML = '<td>' + (idx + 1) + '</td>' +
+                    '<td><b>' + g.name + '</b></td>' +
+                    '<td><span class="badge bg-' + g.platClass + '">' + g.platform + '</span></td>' +
+                    '<td>' + g.maker + '</td>' +
+                    '<td>' + g.type + '</td>' +
+                    '<td style="color:#10b981; font-weight:bold;">' + g.price + '$</td>' +
+                    '<td><a href="product-details.html" class="btn-blue" onclick="localStorage.setItem(\'gp_selected_product\', ' + g.id + ')">التفاصيل</a> ' +
+                    '<button class="btn" onclick="addToCart(' + g.id + ')">أضف</button></td>';
+            });
+        }
+    </script>
+</body>
+</html>

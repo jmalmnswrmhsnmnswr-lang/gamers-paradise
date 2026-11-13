@@ -1,0 +1,195 @@
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+#header {
+    background-color: #1e293b;
+    padding: 15px 30px;
+    border-bottom: 3px solid #38bdf8;
+    text-align: center;
+}
+
+#header h1 {
+    color: #38bdf8;
+    margin: 0 0 10px 0;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    display: inline-block;
+    margin: 5px 8px;
+}
+
+.nav-list a {
+    color: #f8fafc;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 14px;
+    background-color: #2563eb;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.nav-list a:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+#content {
+    padding: 20px 5%;
+}
+
+.filter-bar {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #1e293b;
+    border: 2px dashed #38bdf8;
+}
+
+.filter-btn {
+    background-color: #334155;
+    color: #ffffff;
+    border: 1px solid #475569;
+    padding: 8px 16px;
+    margin: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.card {
+    display: inline-block;
+    width: 260px;
+    background-color: #1e293b;
+    border: 2px solid #334155;
+    margin: 12px;
+    padding: 15px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.plat-ps5 { border-top: 5px solid #2563eb; }
+.plat-xbox { border-top: 5px solid #10b981; }
+.plat-pc { border-top: 5px solid #f59e0b; }
+.plat-nintendo { border-top: 5px solid #ef4444; }
+.plat-console { border: 3px double #38bdf8; }
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 3px;
+    color: #ffffff;
+}
+
+.bg-ps5 { background-color: #2563eb; }
+.bg-xbox { background-color: #10b981; }
+.bg-pc { background-color: #d97706; }
+.bg-nintendo { background-color: #dc2626; }
+.bg-type { background-color: #7c3aed; }
+
+.price-tag {
+    color: #10b981;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.btn {
+    background-color: #10b981;
+    color: #ffffff;
+    border: none;
+    padding: 9px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.btn:hover {
+    background-color: #059669;
+}
+
+.btn-blue {
+    background-color: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 12px;
+    display: inline-block;
+    margin: 4px;
+    font-size: 14px;
+}
+
+.btn-danger {
+    background-color: #dc2626;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border: 2px solid #38bdf8;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #1e293b;
+}
+
+th, td {
+    border: 1px solid #475569;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.form-box {
+    background-color: #1e293b;
+    border: 2px dotted #38bdf8;
+    padding: 25px;
+    max-width: 550px;
+    margin: 20px auto;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
+    width: 95%;
+    padding: 8px;
+    margin: 6px 0 15px 0;
+}
+
+.scroll-box {
+    width: 95%;
+    height: 85px;
+    border: 1px solid #38bdf8;
+    padding: 10px;
+    overflow: auto;
+    background-color: #0f172a;
+    margin: 15px 0;
+}
+
+#footer {
+    background-color: #1e293b;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+    border-top: 2px solid #334155;
+}

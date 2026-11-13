@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamers Paradise | السلة وحاسبة التوصيل</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <h1>🎮 Gamers Paradise - جنة اللاعبين</h1>
+        <ul class="nav-list">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="consoles.html">أجهزة الألعاب (5)</a></li>
+            <li><a href="games.html">الألعاب والنسخ (20)</a></li>
+            <li><a href="product-details.html">تفاصيل المنتج</a></li>
+            <li><a href="cart.html">🛒 السلة والتوصيل (<span id="cart-count">0</span>)</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h2>🛒 سلة المشتريات التفاعلية وحاسبة التوصيل</h2>
+        <p>أي جهاز أو لعبة تقوم بإضافتها من صفحات المتجر ستظهر هنا ويتم حساب إجمالي الفاتورة تلقائياً:</p>
+
+        <div style="margin-bottom: 10px;">
+            <b>إضافة سريعة للتجربة: </b>
+            <button type="button" class="btn" onclick="quickAdd(6)">+ GTA 6 قرص (79$)</button>
+            <button type="button" class="btn" onclick="quickAdd(1)">+ PS5 جهاز (499$)</button>
+            <button type="button" class="btn" onclick="quickAdd(16)">+ Cyberpunk PC (39$)</button>
+            <button type="button" class="btn-danger" onclick="clearCart()">🗑️ إفراغ السلة</button>
+        </div>
+
+        <table id="cart-table">
+            <tr>
+                <th>#</th>
+                <th>اسم المنتج</th>
+                <th>المنصة</th>
+                <th>نوع النسخة</th>
+                <th>السعر</th>
+                <th>حذف</th>
+            </tr>
+        </table>
+
+        <div class="form-box">
+            <h3>🧮 حاسبة الفاتورة وبيانات التوصيل</h3>
+            <p>مجموع المنتجات: <b><span id="subtotal-val">0</span>$</b></p>
+            <p>رسوم التوصيل المختارة: <b><span id="shipping-val">0</span>$</b></p>
+            <p class="price-tag">الإجمالي النهائي المطلوب: <span id="final-total">0</span>$</p>
+            <hr>
+
+            <form id="checkout-form">
+                <label for="cust_name">الاسم الكامل للمستلم:</label><br>
+                <input type="text" id="cust_name" name="cust_name" placeholder="أدخل اسمك الكامل"><br>
+
+                <label for="country">اختر الدولة:</label><br>
+                <select name="country" id="country">
+                    <option value="Yemen">Yemen</option>
+                    <option value="KSA">KSA</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Other">Other</option>
+                </select><br>
+
+                <label>اختر طريقة التوصيل (تتحدث الحاسبة تلقائياً):</label><br>
+                <input type="radio" id="del_free" name="delivery" value="0" checked onchange="calculateTotal()">
+                <label for="del_free">استلام كود رقمي فوري / استلام من الفرع (مجاناً - 0$)</label><br>
+
+                <input type="radio" id="del_std" name="delivery" value="10" onchange="calculateTotal()">
+                <label for="del_std">توصيل عادي للمنزل خلال 3 أيام (+10$)</label><br>
+
+                <input type="radio" id="del_vip" name="delivery" value="25" onchange="calculateTotal()">
+                <label for="del_vip">توصيل سريع VIP في نفس اليوم (+25$)</label><br><br>
+
+                <label for="address">العنوان التفصيلي:</label><br>
+                <textarea id="address" name="address" rows="3" placeholder="المدينة - الشارع - رقم المنزل"></textarea><br>
+
+                <input type="checkbox" id="agree" name="agree" checked>
+                <label for="agree">أوافق على شروط التوصيل والدفع عند الاستلام</label><br><br>
+
+                <button type="button" class="btn" onclick="confirmOrder()">✅ تأكيد الطلب وإصدار الفاتورة</button>
+                <input type="reset" value="مسح الحقول" style="padding: 9px;">
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <p style="color: #94a3b8;">جميع الحقوق محفوظة &copy; 2026 - مشروع جامعي: <strong>Gamers Paradise</strong></p>
+        <p><a href="https://www.w3schools.com/" target="_blank" style="color: #38bdf8;">مرجع تعلم تطوير الويب W3Schools</a></p>
+    </div>
+    <script src="store.js"></script>
+    <script>
+        var currentSubtotal = 0;
+
+        function quickAdd(id) {
+            var p = PRODUCTS.find(function(item) { return item.id === id; });
+            var cart = getCart();
+            cart.push(p);
+            saveCart(cart);
+            renderCartPage();
+        }
+
+        function calculateTotal() {
+            var radios = document.getElementsByName("delivery");
+            var shipCost = 0;
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    shipCost = parseInt(radios[i].value);
+                    break;
+                }
+            }
+            if (currentSubtotal === 0) shipCost = 0;
+            document.getElementById("subtotal-val").innerHTML = currentSubtotal;
+            document.getElementById("shipping-val").innerHTML = shipCost;
+            document.getElementById("final-total").innerHTML = currentSubtotal + shipCost;
+        }
+
+        function renderCartPage() {
+            var table = document.getElementById("cart-table");
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+            var cart = getCart();
+            currentSubtotal = 0;
+
+            if (cart.length === 0) {
+                var emptyRow = table.insertRow(-1);
+                emptyRow.innerHTML = '<td colspan="6" style="color:#94a3b8; padding:20px;">السلة فارغة حالياً! أضف منتجات من صفحة الأجهزة أو الألعاب أو استخدم أزرار الإضافة السريعة أعلاه.</td>';
+            } else {
+                cart.forEach(function(item, index) {
+                    currentSubtotal += item.price;
+                    var row = table.insertRow(-1);
+                    row.innerHTML = '<td>' + (index + 1) + '</td>' +
+                        '<td><b>' + item.name + '</b></td>' +
+                        '<td>' + item.platform + '</td>' +
+                        '<td>' + item.type + '</td>' +
+                        '<td style="color:#10b981; font-weight:bold;">' + item.price + '$</td>' +
+                        '<td><button type="button" class="btn-danger" onclick="removeFromCart(' + index + ')">✖</button></td>';
+                });
+            }
+            calculateTotal();
+        }
+
+        function confirmOrder() {
+            var cart = getCart();
+            if (cart.length === 0) {
+                window.alert("⚠️ السلة فارغة! يرجى إضافة منتج واحد على الأقل قبل تأكيد الطلب.");
+                return;
+            }
+            var total = document.getElementById("final-total").innerHTML;
+            var name = document.getElementById("cust_name").value || "عميلنا العزيز";
+            window.alert("✅ شكراً لك يا " + name + "!\nتم تأكيد طلبك التجريبي بنجاح.\nعدد المنتجات: " + cart.length + "\nالإجمالي المدفوع: " + total + "$\nرقم الشحنة: #GP-2026");
+            clearCart();
+        }
+
+        function pageInit() {
+            renderCartPage();
+        }
+    </script>
+</body>
+</html>

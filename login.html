@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gamers Paradise | تسجيل الدخول</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <h1>🎮 Gamers Paradise - جنة اللاعبين</h1>
+        <ul class="nav-list">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="consoles.html">أجهزة الألعاب (5)</a></li>
+            <li><a href="games.html">الألعاب والنسخ (20)</a></li>
+            <li><a href="product-details.html">تفاصيل المنتج</a></li>
+            <li><a href="cart.html">🛒 السلة والتوصيل (<span id="cart-count">0</span>)</a></li>
+            <li><a href="login.html">تسجيل الدخول</a></li>
+            <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div class="form-box">
+            <h2>Registration & Login Form</h2>
+            <form>
+                <label>Enter your full name:</label><br>
+                <input type="text" name="name" placeholder="الاسم الكامل"><br>
+
+                <label>Enter your email:</label><br>
+                <input type="email" name="email" placeholder="example@email.com"><br>
+
+                <label>Enter your password:</label><br>
+                <input type="password" name="pass"><br>
+
+                <label>Confirm your password:</label><br>
+                <input type="password" name="cpass"><br>
+
+                <label>Enter your gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br><br>
+
+                <label>Your Favorite Platforms (Checkboxes):</label><br>
+                <input type="checkbox" id="p1" name="plat1" value="PS5">
+                <label for="p1">PlayStation 5</label><br>
+                <input type="checkbox" id="p2" name="plat2" value="Xbox">
+                <label for="p2">Xbox Series X|S</label><br>
+                <input type="checkbox" id="p3" name="plat3" value="PC">
+                <label for="p3">PC Gaming</label><br>
+                <input type="checkbox" id="p4" name="plat4" value="Nintendo">
+                <label for="p4">Nintendo Switch</label><br><br>
+
+                <label for="register_country">Select Country:</label><br>
+                <select name="country" id="register_country">
+                    <option value="Yemen">Yemen</option>
+                    <option value="KSA">KSA</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="china">China</option>
+                    <option value="other">Other</option>
+                </select><br>
+
+                <button type="button" class="btn" onclick='window.alert("✅ تم تسجيل الدخول / إنشاء الحساب بنجاح في Gamers Paradise!")'>Sign-up / Login</button>
+                <input type="reset" value="Cancel" style="padding: 9px;">
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <p style="color: #94a3b8;">جميع الحقوق محفوظة &copy; 2026 - مشروع جامعي: <strong>Gamers Paradise</strong></p>
+        <p><a href="https://www.w3schools.com/" target="_blank" style="color: #38bdf8;">مرجع تعلم تطوير الويب W3Schools</a></p>
+    </div>
+    <script src="store.js"></script>
+</body>
+</html>
