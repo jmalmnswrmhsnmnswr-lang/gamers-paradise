@@ -1,2 +1,2 @@
 # gamers-paradise
-the perfect website fr gamers
+the perfect website for gamers
